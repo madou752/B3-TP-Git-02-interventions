@@ -33,10 +33,18 @@ function afficherInterventions() {
 formulaire.addEventListener("submit", function (evenement) {
     evenement.preventDefault();
 
+    const equipement = champEquipement.value.trim();
+    const technicien = champTechnicien.value.trim();
+
+    if (equipement === "" || technicien === "") {
+        alert("Veuillez renseigner l'equipement et le technicien.");
+        return;
+    }
+
     interventions.push({
         id: Date.now(),
-        equipement: champEquipement.value.trim(),
-        technicien: champTechnicien.value.trim(),
+        equipement: equipement,
+        technicien: technicien,
         date: champDate.value
     });
 
